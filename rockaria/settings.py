@@ -10,12 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+# rockaria/settings.py
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv # <--- This line
+load_dotenv() # <--- And this line, ensure they are high up
 
-from dotenv import load_dotenv
-load_dotenv()
+# ... rest of your settings.py
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
