@@ -14,6 +14,15 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = "/static/"
+
+# Add this section:
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 from dotenv import load_dotenv # <--- This line
 load_dotenv() # <--- And this line, ensure they are high up
 
