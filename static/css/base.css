@@ -10,7 +10,7 @@ body {
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
-    font-family: 'Lato';
+    font-family: 'Crimson';
 }
 
 /* from Bulma */
@@ -33,7 +33,7 @@ body {
 .shop-now-button {
     background: black;
     color: white;
-    min-width: 260px;
+    min-width: 220px;
 }
 
 .btn-black {
