@@ -18,6 +18,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style>
+        /* Sticky footer adjustments */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures body takes full viewport height */
+        }
+        .main-content-wrapper {
+            flex-grow: 1; /* Allows this div to grow and push footer down */
+            /* The padding-top is already set inline, but could be here too */
+        }
+        footer {
+            background-color: #343a40; /* Dark background for footer */
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #cccccc;
+        }
+    </style>
     {% endblock %}
 
     {% block extra_css %}
@@ -25,7 +51,6 @@
 
     {% block corejs %}
     <script src="https://kit.fontawesome.com/d76c2e330f.js" crossorigin="anonymous"></script>
-    <!-- Consolidated Bootstrap JS to only include the bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     {% endblock %}
 
@@ -101,12 +126,27 @@
                 </ul>
             </div>
         </div>
+        <div class="row bg-white">
+      <nav class="navbar navbar-expand-lg navbar-light w-100">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+          aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        {% include 'includes/mobile-top-header.html' %}
+        {% include 'includes/main-nav.html' %}
+      </nav>
+    </div>
+    <div id="delivery-banner" class="row text-center">
+      <div class="col bg-black text-white">
+        <h4 class="logo-font my-1">Free delivery on orders over ${{ free_shipping_threshold }}!</h4>
+      </div>
+    </div>
     </header>
 
     <!-- This div creates space for the fixed header, push content down -->
     <!-- You might need to adjust this padding-top value in base.css or style attribute
          to perfectly match your header's actual height. -->
-    <div style="padding-top: 100px;">
+    <div class="main-content-wrapper" style="padding-top: 100px;">
         {% if messages %}
         <div class="message-container"></div>
         {% endif %}
@@ -120,6 +160,31 @@
         {% block postloadjs %}
         {% endblock %}
     </div>
+
+    {# Moved footer inside the <body> tag #}
+    {% block footer %}
+    <footer class="container-fluid bg-black text-white text-center py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-0">&copy; {% now "Y" %} Rockaria. All rights reserved.</p>
+                </div>
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item me-3"><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li class="list-inline-item me-3"><a href="#" class="text-white">Terms of Service</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
 
   </body>
 </html>
