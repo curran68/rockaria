@@ -15,3 +15,4 @@ class Command(BaseCommand):
             json_file.write(data)
 
         self.stdout.write(self.style.SUCCESS(f"Exported Band and Concert data to {file_path}"))
+
