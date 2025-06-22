@@ -1,6 +1,23 @@
-<h1>Bands</h1>
-<ul>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>All Bands</h1>
+
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<div class="band-grid">
   {% for band in bands %}
-    <li><strong>{{ band.name }}</strong> — {{ band.genre }} from {{ band.origin }}</li>
+    <div class="band-card">
+      {% if band.image %}
+        <img src="{{ band.image.url }}" alt="{{ band.name }}">
+      {% else %}
+        <div class="placeholder-image">No Image</div>
+      {% endif %}
+      <h2>{{ band.name }}</h2>
+      <p><strong>Genre:</strong> {{ band.genre }}</p>
+      <p><strong>Origin:</strong> {{ band.origin }}</p>
+    </div>
   {% endfor %}
-</ul>
+</div>
+{% endblock %}
