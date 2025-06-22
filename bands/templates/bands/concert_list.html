@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<br>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<h1 class="concert-heading">Rockaria 2026</h1>
+
+<div class="concert-grid">
+  {% for concert in concerts %}
+    <div class="concert-card">
+      <h2>{{ concert.title }}</h2>
+      <p><strong>Date:</strong> {{ concert.date }}</p>
+      <p><strong>Location:</strong> {{ concert.location }}</p>
+
+      {% if concert.bands.all %}
+        <p><strong>Featuring:</strong>
+          {% for band in concert.bands.all %}
+            {{ band.name }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p>No upcoming concerts found.</p>
+  {% endfor %}
+</div>
+{% endblock %}
+
