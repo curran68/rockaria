@@ -83,6 +83,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static',  # make sure this is present
+                'home.context_processors.currency',
             ],
         },
     },
@@ -160,6 +162,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+CURRENCY_SYMBOL = "£"
+
 
 
 # Static files (CSS, JavaScript, Images)

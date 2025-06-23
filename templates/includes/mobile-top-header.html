@@ -21,6 +21,6 @@
 <li class="nav-item d-lg-none">
   <a class="nav-link {% if grand_total %}text-primary fw-bold{% else %}text-white{% endif %}" href="#">
     <i class="fas fa-shopping-bag"></i>
-    ${{ grand_total|default_if_none:"0.00"|floatformat:2 }}
+    {{ currency }}{{ grand_total|default_if_none:"0.00"|floatformat:2 }}
   </a>
 </li>
