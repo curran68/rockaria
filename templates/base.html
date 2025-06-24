@@ -111,7 +111,7 @@
                 {% if request.user.is_superuser %}
                   <li><a class="dropdown-item" href="#">Select</a></li>
                 {% endif %}
-                <li><a class="dropdown-item" href="{% url 'account_login' %}">My Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
                 <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
               {% else %}
                 <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
