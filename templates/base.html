@@ -68,84 +68,71 @@
     <title>Rockaria {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top">
-        <!-- Top Nav - Visible on Large Screens Only -->
-        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
-    <div class="col-12 col-lg-6 my-auto py-1 text-center">
-        <a href="{% url 'home' %}" class="nav-link main-logo-link">
-            <h2 class="logo-font text-black my-0"><strong>Rockaria</strong></h2>
-        </a>
-    </div>
-    <div class="col-12 col-lg-6 my-auto py-1 text-end">
-        <ul class="list-inline list-unstyled my-0">
-            <li class="list-inline-item dropdown">
-                <a class="text-black nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user fa-lg"></i>
-                    <span class="ms-1">My Account</span>
-                </a>
-                <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                    {% if request.user.is_authenticated %}
-                        {% if request.user.is_superuser %}
-                            <a href="#" class="dropdown-item">Product Management</a>
-                        {% endif %}
-                        <a href="{% url 'account_login' %}" class="dropdown-item">My Profile</a>
-                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                    {% else %}
-                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                    {% endif %}
-                </div>
-            </li>
-            <li class="list-inline-item">
-                <a class="nav-link {% if grand_total %}text-info fw-bold{% else %}text-black{% endif %}" href="#">
-                    <i class="fas fa-shopping-bag fa-lg"></i>
-                    <span>${{ grand_total|default_if_none:"0.00"|floatformat:2 }}</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
+    <header class="fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <div class="container-fluid">
 
-        <!-- Main Navigation for all screen sizes -->
-        <div class="row bg-white">
-            <nav class="navbar navbar-expand-lg navbar-light w-100">
-                <!-- Mobile Logo (visible on small screens) -->
-                <a class="navbar-brand d-lg-none" href="{% url 'home' %}">
-                    <h2 class="logo-font text-black my-0"><strong>Rockaria</strong></h2>
-                </a>
-                
-                <!-- Navbar Toggler for Mobile -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
-                    aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <!-- Collapsible Navbar Content -->
-                <div class="collapse navbar-collapse" id="main-nav">
-                    <!-- Your mobile-top-header.html content if it's part of the nav items -->
-                    {% include 'includes/mobile-top-header.html' %} 
-                    <!-- Your main-nav.html content -->
-                    {% include 'includes/main-nav.html' %} 
-                    <!-- Example of what main-nav.html might contain: -->
-                    <!-- <ul class="navbar-nav w-auto mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Shop All</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="clothing-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Clothing
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="clothing-dropdown">
-                                <li><a class="dropdown-item" href="#">T-Shirts</a></li>
-                                <li><a class="dropdown-item" href="#">Hoodies</a></li>
-                            </ul>
-                        </li>
-                    </ul> -->
-                </div>
-            </nav>
+      <!-- Logo -->
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <h2 class="logo-font text-light my-0"><strong>Rockaria</strong></h2>
+      </a>
+
+      <!-- Mobile toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="navbarMain">
+
+        <!-- Centered nav items -->
+        <div class="w-100 text-center">
+          <ul class="navbar-nav d-inline-flex justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'band_list' %}">Bands</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'concert_list' %}">Concerts</a>
+              </li>
+          </ul>
         </div>
-        
-    </header>
+
+
+        <!-- Account and cart on the right -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user fa-lg"></i>
+              <span class="ms-1">Account</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                  <li><a class="dropdown-item" href="#">Select</a></li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{% url 'account_login' %}">My Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+              {% else %}
+                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
+              {% endif %}
+            </ul>
+          </li>
+
+          <li class="nav-item ms-3">
+            <a class="nav-link {% if grand_total %}text-warning fw-bold{% else %}text-light{% endif %}" href="#">
+              <i class="fas fa-shopping-bag fa-lg"></i>
+              {{ currency }}{{ grand_total|default_if_none:"0.00"|floatformat:2 }}
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</header>
+    
 
     <!-- This div creates space for the fixed header, push content down -->
     <div class="main-content-wrapper" style="padding-top: 100px;">

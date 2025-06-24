@@ -1,4 +1,5 @@
 from django.conf import settings
 
 def currency(request):
-    return {'currency': settings.CURRENCY_SYMBOL}
+    return {'currency': getattr(settings, 'CURRENCY_SYMBOL', '')}
+

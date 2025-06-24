@@ -163,7 +163,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-CURRENCY_SYMBOL = "£"
+CURRENCY_SYMBOL = ""
 
 
 
