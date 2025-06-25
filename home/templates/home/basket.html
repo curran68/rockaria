@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4">Your Shopping Basket</h1>
+                <p class="lead">This is where your selected items for booking will appear.</p>
+                <hr>
+                <p>Details of your basket items will be shown here.</p>
+                <a href="{% url 'home' %}" class="btn btn-primary mt-3">Continue Shopping (Back to Home)</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

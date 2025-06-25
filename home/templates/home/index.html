@@ -3,8 +3,7 @@
 {% load static %}
 
 {% block page_header %}
-    {# This block is currently empty in your base.html, so it won't affect placement much #}
-    {# But good to keep here if you plan to add a header image or specific page header later #}
+    {# This block remains empty as its purpose is for a different type of page header #}
     <div class="container header-container">
         <div class="row">
             <div class="col"></div>
@@ -13,22 +12,35 @@
 {% endblock %}
 
 {% block content %}
-    {# Removed h-100 and my-auto classes for vertical positioning #}
-    {# Added pt-5 for some padding from the top, just below the navbar #}
-    <div class="container pt-5">
-        <div class="row">
-            <div class="col-7 col-md-6"> {# Removed my-auto from here #}
-                <h1 class="display-4 logo-font text-white">
+    {# --- START: Stand Out Header with Welcome, Bands, and Concerts --- #}
+    {# Using container-fluid for full width, py-5 for vertical padding, bg-dark for background #}
+    <div class="container-fluid text-white text-center py-5">
+        <div class="row justify-content-center"> {# Use justify-content-center to center the column #}
+            <div class="col-12 col-md-8 col-lg-6"> {# Adjusted column width to keep content focused but centered #}
+                <h1 class="display-1 logo-font mb-4"> {# display-1 for very large text, mb-4 for space #}
                     Welcome To Rockaria
                 </h1>
                 <div class="my-5">
                     <h4>
-                        {# Assuming you still want these buttons here, even if not on navbar #}
-                        <a href="{% url 'bands' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Our Bands</a>
-                        <a href="{% url 'concerts' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3 ml-3">Concerts</a>
+                        <a href="{% url 'bands' %}" class="btn btn-lg btn-warning rounded-pill text-uppercase py-3 px-4 me-3">Our Bands</a> {# Added some Bootstrap styling to make buttons stand out #}
+                        <a href="{% url 'concerts' %}" class="btn btn-lg btn-outline-warning rounded-pill text-uppercase py-3 px-4">Concerts</a>
                     </h4>
                 </div>
             </div>
         </div>
     </div>
+    {# --- END: Stand Out Header --- #}
+
+    {# --- START: Optional Main Content Area (below the header) --- #}
+    {# You can add any other content for your index page below this main header #}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="lead">Explore our passionate artists and electrifying live performances!</p>
+                {# Add more sections, images, or calls to action here as your site grows #}
+            </div>
+        </div>
+    </div>
+    {# --- END: Optional Main Content Area --- #}
+
 {% endblock %}
