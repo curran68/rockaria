@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4">Book Your Tickets!</h1>
+                <p class="lead">This is where you'll find information and options to book tickets for upcoming events.</p>
+                <hr>
+                <p>More content and ticket booking forms will go here.</p>
+                <a href="{% url 'home' %}" class="btn btn-primary mt-3">Back to Home</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,9 +1,10 @@
-
 {% extends "base.html" %}
 
 {% load static %}
 
 {% block page_header %}
+    {# This block is currently empty in your base.html, so it won't affect placement much #}
+    {# But good to keep here if you plan to add a header image or specific page header later #}
     <div class="container header-container">
         <div class="row">
             <div class="col"></div>
@@ -12,15 +13,19 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
+    {# Removed h-100 and my-auto classes for vertical positioning #}
+    {# Added pt-5 for some padding from the top, just below the navbar #}
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-7 col-md-6"> {# Removed my-auto from here #}
                 <h1 class="display-4 logo-font text-white">
                     Welcome To Rockaria
                 </h1>
                 <div class="my-5">
                     <h4>
-                        <a href="" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Enter Here</a>
+                        {# Assuming you still want these buttons here, even if not on navbar #}
+                        <a href="{% url 'bands' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Our Bands</a>
+                        <a href="{% url 'concerts' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3 ml-3">Concerts</a>
                     </h4>
                 </div>
             </div>
