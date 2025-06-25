@@ -55,7 +55,13 @@ INSTALLED_APPS = [
     'home',
     'bands',
     'products',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,7 +81,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates', 'allauth'),
+           # os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
