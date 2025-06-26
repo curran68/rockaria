@@ -1,3 +1,75 @@
-<h1>Our Awesome Bands!</h1>
-<p>Details about the bands will go here.</p>
-<a href="{% url 'home' %}">Back to Home</a>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 text-light" style="background-color: #111;">
+  <div class="container">
+    <h2 class="text-warning text-center fw-bold mb-5" style="font-family: 'Joti One', cursive;">
+      Featured Bands
+    </h2>
+    <div class="row g-4">
+
+      {% comment %} Card 1 {% endcomment %}
+      <div class="col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch">
+        <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
+          <img src="{% static 'images/band1.jpg' %}" class="card-img-top" alt="Band 1">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-warning">Electric Howl</h5>
+            <p class="card-text small">A thunderous mix of synth and soul, ripping through London’s underground soundscape.</p>
+            <a href="#" class="btn btn-warning mt-auto">View Band</a>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Card 2 {% endcomment %}
+      <div class="col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch">
+        <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
+          <img src="{% static 'images/band2.jpg' %}" class="card-img-top" alt="Band 2">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-warning">Velvet Scream</h5>
+            <p class="card-text small">Merging vintage grunge with new-era swagger. Always loud, never apologetic.</p>
+            <a href="#" class="btn btn-warning mt-auto">View Band</a>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Card 3 {% endcomment %}
+      <div class="col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch">
+        <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
+          <img src="{% static 'images/band3.jpg' %}" class="card-img-top" alt="Band 3">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-warning">Neon Widow</h5>
+            <p class="card-text small">Drenched in noir and neon, these cinematic rockers set the tone for nightfall rebellion.</p>
+            <a href="#" class="btn btn-warning mt-auto">View Band</a>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Card 4 {% endcomment %}
+      <div class="col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch">
+        <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
+          <img src="{% static 'images/band4.jpg' %}" class="card-img-top" alt="Band 4">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-warning">The Stereo Thieves</h5>
+            <p class="card-text small">Genre-bending hijackers of rhythm—equal parts funk, rock, and chaos.</p>
+            <a href="#" class="btn btn-warning mt-auto">View Band</a>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Card 5 {% endcomment %}
+      <div class="col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch">
+        <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
+          <img src="{% static 'images/band5.jpg' %}" class="card-img-top" alt="Band 5">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-warning">Crimson Echo</h5>
+            <p class="card-text small">Post-rock storytellers drenched in atmosphere, distortion, and raw honesty.</p>
+            <a href="#" class="btn btn-warning mt-auto">View Band</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
