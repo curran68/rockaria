@@ -1,11 +1,13 @@
 # home/views.py
 
-from django.shortcuts import render, redirect, reverse # Ensure redirect and reverse are imported
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib import messages # For displaying messages (like form success/error)
+from django.contrib import messages
 
-from .forms import TicketBookingForm # Make sure this import is correct based on your forms.py location
+# Correctly import the Band model from the 'bands' app
+from bands.models import Band
+from .forms import TicketBookingForm
 
 # --- Core Views ---
 
@@ -31,15 +33,12 @@ def profile(request):
 def admin_dashboard(request):
     """
     A view for staff members to access the admin dashboard.
-    Only one return statement is kept. If you need to show product_management,
-    consider redirecting or rendering product_management.html based on conditions.
     """
     return render(request, 'home/admin_dashboard.html')
 
 def product_management(request):
     """
     A view for product management related tasks.
-    (Consider adding @staff_member_required if only staff should access this).
     """
     return render(request, 'home/product_management.html')
 
@@ -56,12 +55,9 @@ def book_tickets_view(request):
             num_tickets = form.cleaned_data['number_of_tickets']
             email = form.cleaned_data['email']
 
-            # In a real application, you would save this to a database,
-            # send confirmation email, process payment, etc.
-            print(f"Booking {num_tickets} tickets for {email}") # For demonstration
-            
+            print(f"Booking {num_tickets} tickets for {email}")
             messages.success(request, f"Successfully requested {num_tickets} tickets for {email}! We've sent a confirmation to your email.")
-            return redirect(reverse('book_tickets')) # Redirect to clear the form and show message
+            return redirect(reverse('book_tickets'))
         else:
             messages.error(request, "Please correct the errors in the form.")
     else:
@@ -76,19 +72,20 @@ def book_tickets_view(request):
 def view_basket_view(request):
     """
     A placeholder view for the shopping basket/cart page.
-    This is where items added for purchase would typically be displayed.
     """
     return render(request, 'home/basket.html')
 
-# --- Other Content Views (e.g., for direct band/concert pages) ---
-# These are kept for completeness based on previous discussions,
-# even if not currently linked from the main navbar.
+# --- Other Content Views ---
 
 def bands_view(request):
     """
-    A view to display information about bands.
+    A view to display information about bands, fetched from the database.
     """
-    return render(request, 'home/bands.html')
+    bands = Band.objects.all() # Fetch all Band objects
+    context = {
+        'bands': bands # Pass the fetched bands to the template
+    }
+    return render(request, 'home/bands.html', context) # Render the bands.html template with the data
 
 def concerts_view(request):
     """
