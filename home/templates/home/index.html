@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block page_header %}
-    {# This block remains empty as its purpose is for a different type of page header #}
     <div class="container header-container">
         <div class="row">
             <div class="col"></div>
@@ -12,17 +11,23 @@
 {% endblock %}
 
 {% block content %}
-    {# --- START: Stand Out Header with Welcome, Bands, and Concerts --- #}
-    {# Using container-fluid for full width, py-5 for vertical padding, bg-dark for background #}
-    <div class="container-fluid text-white text-center py-5">
-        <div class="row justify-content-center"> {# Use justify-content-center to center the column #}
-            <div class="col-12 col-md-8 col-lg-6"> {# Adjusted column width to keep content focused but centered #}
-                <h1 class="display-1 logo-font mb-4"> {# display-1 for very large text, mb-4 for space #}
-                    Welcome To Rockaria
+    {# --- START: Stand Out Header with Welcome, Description in Blue Box, Bands, and Concerts --- #}
+    {# The main container-fluid remains transparent #}
+    <div class="container-fluid text-center py-4">
+        <div class="row justify-content-center">
+            {# Reverted this div's classes. The box is now only around the paragraph below #}
+            <div class="col-12 col-md-8 col-lg-6">
+                <h1 class="display-1 logo-font mb-3 text-dark"> {# Changed back to text-dark for contrast with light background #}
+                    <strong>Welcome To Rockaria</strong>
                 </h1>
+                {# This is the paragraph that will be inside the blue box #}
+                <p class="lead mb-4 text-dark bg-warning p-3"> {# Added custom class 'highlight-blue-box' and text-dark #}
+                    Towneley Park Burnley July 26!
+                </p>
+
                 <div class="my-5">
                     <h4>
-                        <a href="{% url 'bands' %}" class="btn btn-lg btn-warning rounded-pill text-uppercase py-3 px-4 me-3">Our Bands</a> {# Added some Bootstrap styling to make buttons stand out #}
+                        <a href="{% url 'bands' %}" class="btn btn-lg btn-warning rounded-pill text-uppercase py-3 px-4 me-3">Our Bands</a>
                         <a href="{% url 'concerts' %}" class="btn btn-lg btn-outline-warning rounded-pill text-uppercase py-3 px-4">Concerts</a>
                     </h4>
                 </div>
@@ -31,16 +36,35 @@
     </div>
     {# --- END: Stand Out Header --- #}
 
-    {# --- START: Optional Main Content Area (below the header) --- #}
-    {# You can add any other content for your index page below this main header #}
+    {# --- START: Remaining Content Area --- #}
     <div class="container mt-5">
         <div class="row">
             <div class="col-12 text-center">
-                <p class="lead">Explore our passionate artists and electrifying live performances!</p>
-                {# Add more sections, images, or calls to action here as your site grows #}
+                {# Placeholder for any future content below the main header #}
             </div>
         </div>
     </div>
-    {# --- END: Optional Main Content Area --- #}
+    {# --- END: Remaining Content Area --- #}
 
+{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <style>
+        /* Custom class for the blue, semi-transparent highlight box around the paragraph */
+        .highlight-blue-box {
+            background-color: rgba(173, 216, 230, 0.7); /* Light blue with 70% opacity */
+            padding: 10px 15px; /* Padding inside the box */
+            border-radius: 5px; /* Slightly rounded corners */
+            display: inline-block; /* Allows padding and background to wrap content, but center with text-center */
+            /* If you want it to take full width and still be centered, use display: block; and ensure text-center is on parent */
+            /* For the image provided, it looks like it takes the full width of its parent column */
+            width: 100%; /* Ensures it fills the column width */
+        }
+
+        /* Adjust text color for the main heading as well */
+        /* If your overall background is bright, text-dark is good for the h1 */
+        /* If your overall background (e.g., audience image) is dark, text-white would be better for the h1 */
+        /* Based on the image, the h1 is not visible, but text-dark is chosen here for general contrast */
+    </style>
 {% endblock %}
