@@ -1,3 +1,80 @@
-<h1>Our Awesome Bands!</h1>
-<p>Details about the bands will go here.</p>
-<a href="{% url 'home' %}">Back to Home</a>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 text-light" style="background-color: #111;">
+  <div class="container">
+    <h2 class="text-warning text-center fw-bold mb-5" style="font-family: 'Joti One', cursive;">
+      Upcoming Concerts
+    </h2>
+    <div class="row g-4">
+
+      {% for concert in concerts %}
+      <div class="col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch">
+        <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
+          {# Add a placeholder image if your Concert model doesn't have an image field, or update this if it does #}
+          <img src="{% static 'images/concert_placeholder.jpg' %}" class="card-img-top" alt="Concert Image">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-warning">{{ concert.title }}</h5>
+            <p class="card-text small"><i class="fa-solid fa-calendar-alt"></i> Date: {{ concert.date|date:"F d, Y" }}</p>
+            <p class="card-text small"><i class="fa-solid fa-location-dot"></i> Location: {{ concert.location }}</p>
+            {% if concert.bands.all %}
+                <p class="card-text small">Featuring:
+                    {% for band in concert.bands.all %}
+                        {{ band.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+            {% endif %}
+            <a href="#" class="btn btn-warning mt-auto">Details & Tickets</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center">
+        <p class="lead text-white">No upcoming concerts found yet. Check back soon!</p>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <style>
+        /* Add any specific CSS for concert page if needed, similar to bands.html */
+        body {
+            position: relative;
+            min-height: 100vh;
+            background-color: #333;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("{% static 'home/images/audience-cheering.jpg' %}"); /* Make sure this path is correct */
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: none;
+        }
+        .card-title, .card-text, .card-subtitle {
+            color: white;
+        }
+        .card-text.text-muted {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+    </style>
+{% endblock %}
