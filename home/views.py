@@ -5,8 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 
-# Correctly import the Band model from the 'bands' app
-from bands.models import Band
+# Correctly import the Band AND Concert model from the 'bands' app
+from bands.models import Band, Concert # <-- Ensure Concert is imported here
+
 from .forms import TicketBookingForm
 
 # --- Core Views ---
@@ -89,6 +90,10 @@ def bands_view(request):
 
 def concerts_view(request):
     """
-    A view to display information about concerts.
+    A view to display information about concerts, fetched from the database.
     """
-    return render(request, 'home/concerts.html')
+    concerts = Concert.objects.all().order_by('date') # Fetch all Concert objects, ordered by date
+    context = {
+        'concerts': concerts # Pass the fetched concerts to the template
+    }
+    return render(request, 'home/concerts.html', context) # Render the concerts.html template with the data
