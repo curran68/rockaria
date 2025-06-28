@@ -11,17 +11,18 @@
 {% endblock %}
 
 {% block content %}
-    {# --- START: Stand Out Header with Welcome, Description in Blue Box, Bands, and Concerts --- #}
-    {# The main container-fluid remains transparent #}
-    <div class="container-fluid text-center py-4">
+    {# MODIFIED: Changed py-4 to pt-0 pb-4 to move content up #}
+    <div class="container-fluid text-center pt-0 pb-4">
         <div class="row justify-content-center">
-            {# Reverted this div's classes. The box is now only around the paragraph below #}
             <div class="col-12 col-md-8 col-lg-6">
-                <h1 class="display-1 logo-font mb-3 text-dark"> {# Changed back to text-dark for contrast with light background #}
-                    <strong>Welcome To Rockaria</strong>
+                {# MODIFIED: Changed text-dark to text-light. Retained display-3, logo-font, mb-3, and style for centering/no-wrap #}
+                <h1 class="display-3 logo-font mb-3 text-light text-center">
+                <strong>ROCKARIA</strong><br>
+                <span class="fs-4 fw-light">An Exciting One-Off Event</span>
                 </h1>
-                {# This is the paragraph that will be inside the blue box #}
-                <p class="lead mb-4 text-dark bg-warning p-3"> {# Added custom class 'highlight-blue-box' and text-dark #}
+
+                {# Yellow Box Paragraph: Explicitly centered #}
+                <p class="lead mb-4 text-dark bg-warning p-3 d-inline-block mx-auto">
                     Towneley Park Burnley July 26!
                 </p>
 
@@ -34,37 +35,45 @@
             </div>
         </div>
     </div>
-    {# --- END: Stand Out Header --- #}
-
-    {# --- START: Remaining Content Area --- #}
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12 text-center">
-                {# Placeholder for any future content below the main header #}
-            </div>
-        </div>
-    </div>
-    {# --- END: Remaining Content Area --- #}
-
 {% endblock %}
 
 {% block extra_css %}
-    {{ block.super }}
-    <style>
-        /* Custom class for the blue, semi-transparent highlight box around the paragraph */
-        .highlight-blue-box {
-            background-color: rgba(173, 216, 230, 0.7); /* Light blue with 70% opacity */
-            padding: 10px 15px; /* Padding inside the box */
-            border-radius: 5px; /* Slightly rounded corners */
-            display: inline-block; /* Allows padding and background to wrap content, but center with text-center */
-            /* If you want it to take full width and still be centered, use display: block; and ensure text-center is on parent */
-            /* For the image provided, it looks like it takes the full width of its parent column */
-            width: 100%; /* Ensures it fills the column width */
-        }
+  {{ block.super }}
+  <style>
+    /* Blue highlight box (still optional, but cleaned up) */
+    .highlight-blue-box {
+      background-color: rgba(173, 216, 230, 0.7);
+      padding: 10px 15px;
+      border-radius: 5px;
+      display: inline-block;
+      width: 100%;
+    }
 
-        /* Adjust text color for the main heading as well */
-        /* If your overall background is bright, text-dark is good for the h1 */
-        /* If your overall background (e.g., audience image) is dark, text-white would be better for the h1 */
-        /* Based on the image, the h1 is not visible, but text-dark is chosen here for general contrast */
-    </style>
+    /* Hero heading (ROCKARIA) styles */
+    .logo-font {
+      line-height: 1.1;
+      word-break: break-word;
+      text-align: center;
+    }
+
+    .logo-font strong {
+      font-size: 3rem;
+    }
+
+    .logo-font span {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 300;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 576px) {
+      .logo-font strong {
+        font-size: 2.25rem;
+      }
+      .logo-font span {
+        font-size: 1rem;
+      }
+    }
+  </style>
 {% endblock %}
