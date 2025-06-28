@@ -71,9 +71,7 @@
             <div class="container-fluid">
 
                 <a class="navbar-brand" href="{% url 'home' %}">
-                    <h2 class="logo-font text-light my-0"><strong>Rockaria</strong></h2>
-                </a>
-
+                <i class="fas fa-home text-warning fa-2x"></i> </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
                     aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -85,19 +83,20 @@
                     
                     {# ms-auto will push this entire ul to the right #}
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
-                        <li class="nav-item">
-                            {# You'll need a URL named 'book_tickets' for this #}
-                            <a class="nav-link" href="{% url 'book_tickets' %}">Book Tickets</a>
-                        </li>
-                        <li class="nav-item ms-3"> {# ms-3 adds margin between Book Tickets and Basket #}
-                            {# This re-uses your previous basket/cart link #}
-                            <a class="nav-link {% if grand_total %}text-warning fw-bold{% else %}text-light{% endif %}" href="{% url 'view_basket' %}"> {# Assuming a URL named 'view_basket' for your cart/basket page #}
-                                <i class="fas fa-shopping-bag fa-lg"></i>
-                                {# Display total if you want, or remove if just icon #}
-                                {{ currency }}{{ grand_total|default_if_none:"0.00"|floatformat:2 }}
-                            </a>
-                        </li>
-                    </ul>
+    <li class="nav-item">
+        {# Changed text-light to text-warning #}
+        <a class="nav-link text-warning" href="{% url 'book_tickets' %}">Book Tickets</a>
+    </li>
+    <li class="nav-item ms-3">
+        {# The shopping bag already has text-warning when grand_total is true, but we'll ensure it's always warning color #}
+        {# Removed the if/else for text-light and made it always text-warning #}
+        <a class="nav-link text-warning fw-bold" href="{% url 'view_basket' %}">
+            <i class="fas fa-shopping-bag fa-lg"></i>
+            {# Display total if you want, or remove if just icon #}
+            {{ currency }}{{ grand_total|default_if_none:"0.00"|floatformat:2 }}
+        </a>
+    </li>
+</ul>
 
                 </div>
             </div>
