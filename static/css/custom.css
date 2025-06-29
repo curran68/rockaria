@@ -4,6 +4,10 @@
 .rockaria-banner {
   animation: pulseText 3s ease-in-out infinite;
   text-shadow: 0 0 10px #ffc10799, 0 0 20px #ffc10755;
+  display: inline-block;
+  padding-left: 4px; /* adjust as needed */
+  padding-right: 4px;
+  transform: translateY(1px); /* for fine vertical alignment */
 }
 
 @keyframes pulseText {
