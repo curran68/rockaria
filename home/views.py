@@ -45,20 +45,43 @@ def product_management(request):
 
 # --- Ticket Booking & Basket Views ---
 
+import stripe
+from django.conf import settings
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
 def book_tickets_view(request):
     """
-    View for displaying and processing the ticket booking form.
-    Handles both GET (display empty form) and POST (process form submission).
+    Handles ticket booking and creates a Stripe Checkout session.
     """
     if request.method == 'POST':
         form = TicketBookingForm(request.POST)
         if form.is_valid():
-            num_tickets = form.cleaned_data['number_of_tickets']
+            name = form.cleaned_data['full_name']
             email = form.cleaned_data['email']
+            tickets = form.cleaned_data['number_of_tickets']
+            total_cost = tickets * 2000  # £20 per ticket in pence
 
-            print(f"Booking {num_tickets} tickets for {email}")
-            messages.success(request, f"Successfully requested {num_tickets} tickets for {email}! We've sent a confirmation to your email.")
-            return redirect(reverse('book_tickets'))
+            # Create Stripe Checkout session
+            checkout_session = stripe.checkout.Session.create(
+                payment_method_types=['card'],
+                customer_email=email,
+                line_items=[{
+                    'price_data': {
+                        'currency': 'gbp',
+                        'unit_amount': total_cost,
+                        'product_data': {
+                            'name': f'Rockaria Ticket(s) x{tickets}',
+                        },
+                    },
+                    'quantity': 1,
+                }],
+                mode='payment',
+                success_url=request.build_absolute_uri('/booking/success/'),
+                cancel_url=request.build_absolute_uri('/booking/cancel/'),
+            )
+
+            return redirect(checkout_session.url, code=303)
         else:
             messages.error(request, "Please correct the errors in the form.")
     else:

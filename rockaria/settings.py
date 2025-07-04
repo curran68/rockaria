@@ -14,12 +14,17 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
+stripe_secret = os.getenv("STRIPE_WEBHOOK_SECRET")
+stripe.Webhook.construct_event(payload, sig_header, stripe_secret)
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 from dotenv import load_dotenv # <--- This line
 load_dotenv() # <--- And this line, ensure they are high up
 
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY"
 # ... rest of your settings.py
 
 
@@ -173,9 +178,6 @@ USE_TZ = True
 
 CURRENCY_SYMBOL = ""
 
-STRIPE_PUBLIC_KEY = 'pk_test_51RZHdYQLa2LfFLU0irIBRtidmtudfBumbMK4LZCnx9DYODczRnmt5H2AvFpPvL2iQVXDCNHLlTDltM2eF2CYPNg300phruXazI'
-STRIPE_SECRET_KEY = 'sk_test_51RZHdYQLa2LfFLU0lcY35G6qBbNYVbYNkv1eySi4s5sgXQh4lFrIWUJnv7Klnp4PynQQuVPAbnXnlDVesVwUubDU00uUmODL8Q'
-STRIPE_WEBHOOK_SECRET = 'whsec_e49698ed67c4a7107adb312e1b88718707104ebb979266e17c20883dc0c1c9d2'
 
 
 # Static files (CSS, JavaScript, Images)
