@@ -12,20 +12,24 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 # rockaria/settings.py
 import os
+import stripe
+from dotenv import load_dotenv
 from pathlib import Path
 
-stripe_secret = os.getenv("STRIPE_WEBHOOK_SECRET")
-stripe.Webhook.construct_event(payload, sig_header, stripe_secret)
+# Load .env file
+load_dotenv()
+
+# Now read the environment variables
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
+STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
+
+# NOW that STRIPE_SECRET_KEY is defined, set the API key
+stripe.api_key = STRIPE_SECRET_KEY
+
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-from dotenv import load_dotenv # <--- This line
-load_dotenv() # <--- And this line, ensure they are high up
-
-STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
-STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY"
-# ... rest of your settings.py
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
