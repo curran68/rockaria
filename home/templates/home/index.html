@@ -11,30 +11,26 @@
 {% endblock %}
 
 {% block content %}
-    {# MODIFIED: Changed py-4 to pt-0 pb-4 to move content up #}
-    <div class="container-fluid text-center pt-0 pb-4">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6">
-                {# MODIFIED: Changed text-dark to text-light. Retained display-3, logo-font, mb-3, and style for centering/no-wrap #}
-                <h1 class="display-3 logo-font mb-3 text-light text-center">
-                <strong>ROCKARIA</strong><br>
-                <span class="fs-4 fw-light">An Exciting One-Off Event</span>
-                </h1>
+<section class="text-light pt-5 pb-5" style="
+  background: url('{% static " images/vinyl-wall.jpg" %}') center/cover no-repeat; background-color: rgba(0, 0, 0,
+  0.75); background-blend-mode: overlay; min-height: 100vh; ">
+  <div class=" container h-100 d-flex flex-column justify-content-center align-items-center text-center">
+  <h1 class="display-3 logo-font mb-3 text-warning animate__animated animate__fadeInDown">
+    <strong>ROCKARIA</strong><br>
+    <span class="fs-4 fw-light text-light">An Exciting One-Off Event</span>
+  </h1>
 
-                {# Yellow Box Paragraph: Explicitly centered #}
-                <p class="lead mb-4 text-dark bg-warning p-3 d-inline-block mx-auto">
-                    Towneley Park Burnley July 26!
-                </p>
+  <p class="lead mb-4 bg-warning text-dark p-3 rounded animate__animated animate__fadeInUp">
+    Towneley Park Burnley • July 26
+  </p>
 
-                <div class="my-5">
-                    <h4>
-                        <a href="{% url 'bands' %}" class="btn btn-lg btn-warning rounded-pill text-uppercase py-3 px-4 me-3">Our Bands</a>
-                        <a href="{% url 'concerts' %}" class="btn btn-lg btn-outline-warning rounded-pill text-uppercase py-3 px-4">Concerts</a>
-                    </h4>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="my-4 animate__animated animate__fadeInUp animate__delay-1s">
+    <a href="{% url 'bands' %}" class="btn btn-lg btn-warning rounded-pill text-uppercase py-3 px-4 me-3">Our Bands</a>
+    <a href="{% url 'concerts' %}"
+      class="btn btn-lg btn-outline-light rounded-pill text-uppercase py-3 px-4">Concerts</a>
+  </div>
+  </div>
+</section>
 {% endblock %}
 
 {% block extra_css %}
