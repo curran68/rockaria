@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 text-light" style="
+  background: url('{% static "images/vinyl-wall.jpg" %}') center/cover no-repeat;
+  background-color: rgba(0, 0, 0, 0.75);
+  background-blend-mode: overlay;
+  min-height: 100vh;
+">
+  <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="card bg-dark text-white shadow-lg rounded-4 p-4 animate__animated animate__fadeInUp">
+      <h2 class="text-warning fw-bold mb-3" style="font-family: 'Joti One', cursive;">
+        Verify Your Email Address 📬
+      </h2>
+      <p class="lead mb-4">
+        We've sent a confirmation email to <strong>me@email.com</strong>. Click the link inside to activate your account and join the Rockaria crowd.
+      </p>
+      <p class="text-muted mb-4">
+        Didn't receive it? Check your spam folder or <a href="{% url 'account_email' %}" class="text-warning fw-semibold text-decoration-none">resend the email</a>.
+      </p>
+      <a href="{% url 'home' %}" class="btn btn-warning fw-bold px-4 py-2">Return to Home</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
