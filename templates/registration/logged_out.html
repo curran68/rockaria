@@ -1,0 +1,12 @@
+{# templates/registration/logged_out.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5 text-center">
+    <h2>You have been logged out.</h2>
+    <p>Thank you for visiting Rockaria!</p>
+    <a href="{% url 'home' %}" class="btn btn-warning mt-3">Go to Home</a>
+    <a href="{% url 'login' %}" class="btn btn-outline-warning mt-3 ms-2">Log In Again</a>
+</div>
+{% endblock %}

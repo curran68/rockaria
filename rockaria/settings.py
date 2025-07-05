@@ -25,7 +25,6 @@ STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
 STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
 
 # NOW that STRIPE_SECRET_KEY is defined, set the API key
-stripe.api_key = STRIPE_SECRET_KEY
 
 
 
@@ -41,6 +40,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") # Use an environment variable
+stripe.api_key = STRIPE_SECRET_KEY
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

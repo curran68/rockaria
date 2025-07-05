@@ -27,6 +27,7 @@ def profile(request):
     Requires user to be logged in.
     """
     return render(request, 'home/profile.html')
+    return render(request, 'profile.html', {'user': request.user})
 
 # --- Admin & Management Views ---
 
