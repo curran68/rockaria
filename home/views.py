@@ -97,3 +97,13 @@ def concerts_view(request):
     """Display concert info, sorted by date."""
     concerts = Concert.objects.all().order_by('date')
     return render(request, 'home/concerts.html', {'concerts': concerts})
+
+def privacy_policy_view(request):
+    return render(request, 'home/privacy.html')
+
+def terms_view(request):
+    return render(request, 'home/terms.html')
+
+def contact_view(request):
+    return render(request, 'home/contact.html')
+
