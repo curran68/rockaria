@@ -128,7 +128,6 @@ ACCOUNT_LOGIN_METHODS = {'email', 'username'}
 
 ACCOUNT_SIGNUP_FIELDS = [
     'email*',        # required
-    'email2*',       # required confirmation
     'username*',     # required
     'password1*',    # required
     'password2*'     # required confirmation

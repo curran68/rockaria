@@ -11,14 +11,14 @@
 
         {# Display Django messages #}
         {% if messages %}
-          <div class="message-container mb-4">
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            {% endfor %}
-          </div>
+        {% for message in messages %}
+        {% if not forloop.first or message != forloop.previous.message %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
         {% endif %}
 
         <form id="bookingForm" method="POST" action="{% url 'book_tickets' %}">
@@ -44,7 +44,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Please review your details. Are you ready to submit your booking?
+          Are you ready to submit your booking? After submitting, you will receive a confirmation email with your booking details.
+          <p class="text-danger mt-3">Please ensure all details are correct before proceeding
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

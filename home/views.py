@@ -1,60 +1,53 @@
-# home/views.py
-
 from django.shortcuts import render, redirect, reverse
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
-
-# Correctly import the Band AND Concert model from the 'bands' app
-from bands.models import Band, Concert # <-- Ensure Concert is imported here
-
-from .forms import TicketBookingForm
-
-# --- Core Views ---
-
-def index(request):
-    """
-    A view to return the main homepage.
-    """
-    return render(request, 'home/index.html')
-
-# --- User & Account Related Views ---
-
-@login_required
-def profile(request):
-    """
-    A view for authenticated users to see their profile.
-    Requires user to be logged in.
-    """
-    return render(request, 'home/profile.html')
-    return render(request, 'profile.html', {'user': request.user})
-
-# --- Admin & Management Views ---
-
-@staff_member_required
-def admin_dashboard(request):
-    """
-    A view for staff members to access the admin dashboard.
-    """
-    return render(request, 'home/admin_dashboard.html')
-
-def product_management(request):
-    """
-    A view for product management related tasks.
-    """
-    return render(request, 'home/product_management.html')
-
-# --- Ticket Booking & Basket Views ---
+from django.conf import settings
+from django.contrib.messages import get_messages
 
 import stripe
-from django.conf import settings
+
+from bands.models import Band, Concert
+from .forms import TicketBookingForm
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+# --- Homepage View ---
+def index(request):
+    """Render the main homepage."""
+    return render(request, 'home/index.html')
+
+# --- User & Account Views ---
+@login_required
+def profile(request):
+    """Display the user's profile if authenticated."""
+    return render(request, 'home/profile.html')
+
+def custom_logout_view(request):
+    """Log out the user and display a message."""
+    logout(request)
+    messages.info(request, "You have signed out.")
+    return redirect('home')
+
+# --- Staff/Admin Views ---
+@staff_member_required
+def admin_dashboard(request):
+    """Dashboard for staff members."""
+    return render(request, 'home/admin_dashboard.html')
+
+def product_management(request):
+    """Page for product-related admin tools."""
+    return render(request, 'home/product_management.html')
+
+# --- Ticket Booking Views ---
 def book_tickets_view(request):
     """
-    Handles ticket booking and creates a Stripe Checkout session.
+    Handles ticket booking and Stripe Checkout session.
+    Clears leftover messages from previous login/logout flow.
     """
+    list(get_messages(request))  # 🧹 Consume any stale messages like "You have signed out"
+
     if request.method == 'POST':
         form = TicketBookingForm(request.POST)
         if form.is_valid():
@@ -88,36 +81,19 @@ def book_tickets_view(request):
     else:
         form = TicketBookingForm()
 
-    context = {
-        'form': form,
-    }
-    return render(request, 'home/book_tickets.html', context)
-
+    return render(request, 'home/book_tickets.html', {'form': form})
 
 def view_basket_view(request):
-    """
-    A placeholder view for the shopping basket/cart page.
-    """
+    """Placeholder for user's basket/cart."""
     return render(request, 'home/basket.html')
 
-# --- Other Content Views ---
-
+# --- Band & Concert Views ---
 def bands_view(request):
-    """
-    A view to display information about bands, fetched from the database.
-    """
-    bands = Band.objects.all() # Fetch all Band objects
-    context = {
-        'bands': bands # Pass the fetched bands to the template
-    }
-    return render(request, 'home/bands.html', context) # Render the bands.html template with the data
+    """Display band information from the database."""
+    bands = Band.objects.all()
+    return render(request, 'home/bands.html', {'bands': bands})
 
 def concerts_view(request):
-    """
-    A view to display information about concerts, fetched from the database.
-    """
-    concerts = Concert.objects.all().order_by('date') # Fetch all Concert objects, ordered by date
-    context = {
-        'concerts': concerts # Pass the fetched concerts to the template
-    }
-    return render(request, 'home/concerts.html', context) # Render the concerts.html template with the data
+    """Display concert info, sorted by date."""
+    concerts = Concert.objects.all().order_by('date')
+    return render(request, 'home/concerts.html', {'concerts': concerts})

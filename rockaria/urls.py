@@ -19,12 +19,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from home.views import custom_logout_view 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Custom logout view must go BEFORE allauth
+    path('accounts/logout/', custom_logout_view, name='account_logout'),
+
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
     path('bands/', include('bands.urls')),
-    path('', include('home.urls')),
     path('products/', include('products.urls')),
     path('payments/', include('payments.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
