@@ -23,28 +23,34 @@
 {% endblock %}
 
 {% block extra_js %}
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const formData = new FormData(this);
-      fetch('{% url "contact" %}', {
-        method: 'POST',
-        body: formData,
-      })
-      .then(response => response.json())
-      .then(data => {
-        const statusMsg = document.getElementById('statusMsg');
-        if (data.success) {
-          statusMsg.innerHTML = '<div class="alert alert-success">Message sent successfully!</div>';
-          this.reset();
-        } else {
-          statusMsg.innerHTML = '<div class="alert alert-danger">Error sending message. Please try again.</div>';
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('statusMsg').innerHTML = '<div class="alert alert-danger">An unexpected error occurred.</div>';
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+  })();
+
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+      .then(() => {
+        const statusMsg = document.getElementById("statusMsg");
+        statusMsg.innerHTML = `
+          <div class="alert alert-success text-center fade show" role="alert">
+            <i class="fas fa-envelope-open-text me-2"></i>
+            Message sent! We’ll be in touch faster than a guitar solo 🎸
+          </div>
+        `;
+        this.reset();
+        setTimeout(() => { statusMsg.innerHTML = ''; }, 4000);
+      }, (error) => {
+        document.getElementById("statusMsg").innerHTML = `
+          <div class="alert alert-danger text-center" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            Oops! Something went wrong. Please try again later.
+          </div>
+        `;
       });
-    });
-  </script>
+  });
+</script>
 {% endblock %}
