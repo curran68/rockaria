@@ -1,54 +1,62 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-        <a class="navbar-brand" href="{% url 'home' %}" aria-label="Home">
-            <i class="fas fa-home text-warning fa-2x"></i>
-        </a>
+    <!-- Logo -->
+    <a class="navbar-brand" href="{% url 'home' %}" aria-label="Home">
+      <i class="fas fa-home text-warning fa-2x"></i>
+    </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-            aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+      aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarMain">
+    <div class="collapse navbar-collapse" id="navbarMain">
 
-            <div class="text-left">
-                <span class="rockaria-banner animate__animated animate__pulse animate__infinite">Rockaria July 26</span>        
-            </div>
+      <!-- Rockaria Banner -->
+      <div class="text-left">
+        <span class="rockaria-banner animate__animated animate__pulse animate__infinite">
+          Rockaria July 26
+        </span>
+      </div>
 
+      <!-- Nav Items -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link text-warning navbar-book-tickets-link" href="{% url 'book_tickets' %}"
-                        style="white-space: nowrap;">
-                        Book Tickets
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-warning fw-bold" href="#" id="userMenu" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Account
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end bg-dark border-0" aria-labelledby="userMenu">
-                        {% if user.is_authenticated %}
-                        <li><a class="dropdown-item text-warning" href="{% url 'profile' %}">Profile</a></li>
-                        <li>
-                            <form action="{% url 'account_logout' %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="dropdown-item text-warning">Logout</button>
-                            </form>
-                        </li>
-                        {% else %}
-                        <li><a class="dropdown-item text-warning" href="{% url 'account_login' %}">Login</a></li>
-                        <li><a class="dropdown-item text-warning" href="{% url 'account_signup' %}">Register</a></li>
-                        {% endif %}
-                    </ul>
-                </li>
+        <!-- Book Tickets -->
+        <li class="nav-item">
+          <a class="nav-link text-warning navbar-book-tickets-link" href="{% url 'book_tickets' %}" style="white-space: nowrap;">
+            Book Tickets
+          </a>
+        </li>
 
+        <!-- Account Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-warning fw-bold" href="#" id="userMenu" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end bg-dark border-0" aria-labelledby="userMenu">
+            {% if user.is_authenticated %}
+              <li><span class="dropdown-item text-muted">Welcome, {{ user.username }}!</span></li>
+              <li><a class="dropdown-item text-warning" href="{% url 'profile' %}">Profile</a></li>
+              <li>
+                <form action="{% url 'account_logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="dropdown-item text-warning">Logout</button>
+                </form>
+              </li>
+            {% else %}
+              <li><a class="dropdown-item text-warning" href="{% url 'account_login' %}">Login</a></li>
+              <li><a class="dropdown-item text-warning" href="{% url 'account_signup' %}">Register</a></li>
+            {% endif %}
+          </ul>
+        </li>
 
-                {# Admin Links #}
-            </ul>
-
-        </div>
+        {# Admin Links or additional nav items could go here #}
+        
+      </ul>
     </div>
+  </div>
 </nav>
