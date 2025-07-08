@@ -21,15 +21,21 @@
         {% endfor %}
         {% endif %}
 
-        <form id="bookingForm" method="POST" action="{% url 'book_tickets' %}">
-          {% csrf_token %}
-          {{ form|crispy }}
-          <div class="text-center mt-4">
-            <a href="{% url 'home' %}" class="btn btn-outline-secondary me-2">Cancel</a>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">
-              Submit Booking
-            </button>
-          </div>
+        {% if concert %}
+        <form id="bookingForm" method="POST" action="{% url 'book_tickets_for_concert' concert.id %}">
+          {% else %}
+          <form id="bookingForm" method="POST" action="{% url 'book_tickets' %}">
+            {% endif %}
+            {% csrf_token %}
+            {{ form|crispy }}
+            
+            <div class="text-center mt-4">
+              <a href="{% url 'home' %}" class="btn btn-outline-secondary me-2">Cancel</a>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                Submit Booking
+              </button>
+            </div>
+          </form>
         </form>
       </div>
     </div>

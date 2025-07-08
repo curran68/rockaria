@@ -26,7 +26,9 @@
                     {% endfor %}
                 </p>
             {% endif %}
-            <a href="#" class="btn btn-warning mt-auto">Details & Tickets</a>
+            <a href="{% url 'book_tickets_for_concert' concert.id %}" class="btn btn-warning mt-auto">Book Tickets</a>
+
+
           </div>
         </div>
       </div>

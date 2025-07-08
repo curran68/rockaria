@@ -13,6 +13,7 @@ urlpatterns = [
     path('terms/', views.terms_view, name='terms_of_service'),
     path('contact/', views.contact_view, name='contact'),
     path('basket/', views.view_basket_view, name='view_basket'),
-    path('book-tickets/<int:concert_id>/', views.book_tickets, name='book_tickets'),
+    path('book-tickets/<int:concert_id>/', views.book_tickets_for_concert, name='book_tickets_for_concert')
+
   # Also ensure this one is there for the basket button
 ]

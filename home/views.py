@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.shortcuts import get_object_or_404
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
@@ -10,6 +11,25 @@ import stripe
 
 from bands.models import Band, Concert
 from .forms import TicketBookingForm
+
+def book_tickets_for_concert(request, concert_id):
+    concert = get_object_or_404(Concert, id=concert_id)
+
+    if request.method == 'POST':
+        form = TicketBookingForm(request.POST)
+        if form.is_valid():
+            return redirect('booking_success')
+        else:
+            messages.error(request, "Please correct the errors in the form.")
+    else:
+        form = TicketBookingForm()
+
+    return render(request, 'home/book_tickets.html', {
+        'concert': concert,
+        'form': form
+    })
+
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -107,9 +127,6 @@ def terms_view(request):
 def contact_view(request):
     return render(request, 'home/contact.html')
 
-def book_tickets(request, concert_id):
-    concert = get_object_or_404(Concert, id=concert_id)
-    # your form logic here
-    return render(request, 'book_tickets.html', {'concert': concert})
+
 
 
