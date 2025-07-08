@@ -22,7 +22,6 @@ from django.conf.urls.static import static
 from home.views import custom_logout_view 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
 
     # Custom logout view must go BEFORE allauth
     path('accounts/logout/', custom_logout_view, name='account_logout'),

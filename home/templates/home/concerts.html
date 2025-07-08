@@ -10,7 +10,8 @@
     <div class="row g-4">
 
       {% for concert in concerts %}
-      <div class="col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch">
+      <div class="col-12 d-flex align-items-stretch">
+
         <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
           {# Add a placeholder image if your Concert model doesn't have an image field, or update this if it does #}
           <img src="{% static 'images/concert_placeholder.jpg' %}" class="card-img-top" alt="Concert Image">

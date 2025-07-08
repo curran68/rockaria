@@ -107,3 +107,9 @@ def terms_view(request):
 def contact_view(request):
     return render(request, 'home/contact.html')
 
+def book_tickets(request, concert_id):
+    concert = get_object_or_404(Concert, id=concert_id)
+    # your form logic here
+    return render(request, 'book_tickets.html', {'concert': concert})
+
+

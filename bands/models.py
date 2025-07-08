@@ -12,7 +12,7 @@ class Band(models.Model):
     booking_fee = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     available_for_booking = models.BooleanField(default=True)
     image = models.ImageField(upload_to='band_images/', blank=True, null=True)
-    logo = models.ImageField(upload_to='band_logos/', blank=True, null=True)
+    logo = models.ImageField(upload_to='logos/', blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
