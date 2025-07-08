@@ -8,32 +8,40 @@
       Featured Bands
     </h2>
     <div class="row g-4">
+      {% for band in bands %}
+  <div class="col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch">
+    <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
+
+      {% if band.logo %}
+      <div class="logo-container text-center pt-3">
+        <img src="{{ band.logo.url }}" alt="{{ band.name }} Logo" class="band-logo img-fluid" />
+      </div>
+      {% endif %}
+
+      {% if band.image %}
+      <img src="{{ band.image.url }}" class="card-img-top" alt="{{ band.name }}">
+      {% else %}
+      <img src="{% static 'images/placeholder_band.jpg' %}" class="card-img-top" alt="Placeholder Band Image">
+      {% endif %}
+
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title text-warning">{{ band.name }}</h5>
+        {% if band.genre %}
+        <p class="card-text small text-muted">{{ band.genre }}</p>
+        {% endif %}
+        <p class="card-text small">{{ band.bio|truncatechars:100 }}</p>
+        <a href="{% url 'band_detail' band.slug %}" class="btn btn-warning mt-auto">View Band</a>
+      </div>
+    </div>
+  </div>
+{% empty %}
+  <div class="col-12 text-center">
+    <p class="lead text-white">No bands found yet. Please add some via the Django admin!</p>
+  </div>
+{% endfor %}
 
       {% comment %} Loop through each band object passed from the view {% endcomment %}
-      {% for band in bands %}
-      <div class="col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch">
-        <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
-          {% if band.image %}
-            <img src="{{ band.image.url }}" class="card-img-top" alt="{{ band.name }}">
-          {% else %}
-            {# Provide a placeholder image if no band image is uploaded #}
-            <img src="{% static 'images/placeholder_band.jpg' %}" class="card-img-top" alt="Placeholder Band Image">
-          {% endif %}
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title text-warning">{{ band.name }}</h5> {# Display band's name from database #}
-            {% if band.genre %}
-              <p class="card-text small text-muted">{{ band.genre }}</p> {# Display band's genre #}
-            {% endif %}
-            <p class="card-text small">{{ band.description|truncatechars:100 }}</p> {# Display band's description, truncated #}
-            <a href="#" class="btn btn-warning mt-auto">View Band</a> {# You can link this to a band detail page later #}
-          </div>
-        </div>
-      </div>
-      {% empty %} {# This block runs if the 'bands' list is empty #}
-      <div class="col-12 text-center">
-        <p class="lead text-white">No bands found yet. Please add some via the Django admin!</p>
-      </div>
-      {% endfor %}
+
 
     </div>
   </div>

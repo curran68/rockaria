@@ -1,5 +1,7 @@
 from django.db import models
+from django.utils.text import slugify
 from django.utils import timezone
+
 
 class Band(models.Model):
     name = models.CharField(max_length=100)
@@ -10,11 +12,24 @@ class Band(models.Model):
     booking_fee = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     available_for_booking = models.BooleanField(default=True)
     image = models.ImageField(upload_to='band_images/', blank=True, null=True)
+    logo = models.ImageField(upload_to='band_logos/', blank=True, null=True)
+    slug = models.SlugField(unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.name)
+            unique_slug = base_slug
+            counter = 1
+            while Band.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = unique_slug
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
-
+    
 class Concert(models.Model):
     title = models.CharField(max_length=100)
     date = models.DateField()
@@ -25,3 +40,4 @@ class Concert(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.date})"
+

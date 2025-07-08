@@ -115,3 +115,17 @@
     box-sizing: border-box;
     height: 100%; /* Ensure button takes full height */
 }
+
+.band-logo {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  background-color: #111;
+}
+
+.logo-container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
