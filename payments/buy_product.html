@@ -1,0 +1,60 @@
+{# templates/payments/buy_product.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5 mt-5 text-center">
+    <div class="card shadow-lg mx-auto" style="max-width: 500px;">
+        <div class="card-header bg-dark text-white custom-page-heading py-3">
+            <h3>{{ product_name }}</h3>
+        </div>
+        <div class="card-body p-4">
+            <p class="card-text lead">Price: £{{ price }}</p>
+            <p class="text-muted small">Click the button below to proceed to secure checkout.</p>
+            <button id="checkout-button" class="btn btn-warning btn-lg mt-3 custom-btn-solid">Buy Now</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+    // Set your Stripe Publishable Key
+    var stripe = Stripe('{{ STRIPE_PUBLISHABLE_KEY }}');
+    var checkoutButton = document.getElementById('checkout-button');
+
+    checkoutButton.addEventListener('click', function() {
+        // Create a new Checkout Session when the button is clicked.
+        fetch('{% url "create_checkout_session" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // CSRF token is not strictly necessary for this POST if @csrf_exempt is used,
+                // but good practice if you were to add other POST data.
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            // body: JSON.stringify({ product_id: 'your_product_id_here' }) // If you have dynamic products
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(session) {
+            if (session.error) {
+                console.error(session.error);
+                alert('Error creating checkout session. Please try again.');
+            } else {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            }
+        })
+        .then(function(result) {
+            // If `redirectToCheckout` fails due to a browser or network error, you'll reach here.
+            if (result.error) {
+                alert(result.error.message);
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+            alert('An unexpected error occurred. Please try again.');
+        });
+    });
+</script>
+{% endblock %}

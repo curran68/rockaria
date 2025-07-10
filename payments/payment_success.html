@@ -1,0 +1,10 @@
+{# templates/payments/payment_success.html #}
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center py-5 mt-5">
+    <h2 class="text-success custom-page-heading">Payment Successful!</h2>
+    <p class="lead">Thank you for your purchase. Your order has been placed.</p>
+    <a href="{% url 'home' %}" class="btn btn-warning mt-3 custom-btn-solid">Back to Home</a>
+</div>
+{% endblock %}

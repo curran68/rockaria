@@ -1,0 +1,11 @@
+{# templates/payments/payment_cancel.html #}
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center py-5 mt-5">
+    <h2 class="text-danger custom-page-heading">Payment Cancelled</h2>
+    <p class="lead">Your payment was cancelled. You can try again or contact support.</p>
+    <a href="{% url 'buy_product' %}" class="btn btn-warning mt-3 custom-btn-solid">Try Again</a>
+    <a href="{% url 'home' %}" class="btn btn-outline-warning mt-3 custom-btn-outline ms-2">Back to Home</a>
+</div>
+{% endblock %}
