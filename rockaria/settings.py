@@ -122,6 +122,10 @@ ACCOUNT_SIGNUP_FIELDS = [
     'password2*',
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
