@@ -18,7 +18,9 @@ stripe.api_key = STRIPE_SECRET_KEY
 # --- Debug & Hosts ---
 DEBUG = config('DEBUG', default=False, cast=bool)
 from decouple import Csv
+
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.github.dev']
+ALLOWED_HOSTS = ['rockaria.herokuapp.com']
 
 DATABASES = {
     'default': {
@@ -67,6 +69,7 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 # --- URLs & WSGI ---
@@ -132,6 +135,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Joti+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.band-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.band-card {
+  background: #111;
+  color: #f1f1f1;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.band-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+  max-height: 200px;
+}
+
+.available {
+  color: limegreen;
+  font-weight: bold;
+}
+
+.unavailable {
+  color: crimson;
+  font-weight: bold;
+}
+
+.placeholder-image {
+  background: #333;
+  color: #aaa;
+  padding: 2rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* concerts section */
+
+.concert-heading {
+  color: white;
+  font-family: 'Roboto', sans-serif ;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.concert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.concert-card {
+  background-color: #222;
+  color: #f8f8f8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+}
+
