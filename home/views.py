@@ -29,7 +29,8 @@ def book_tickets_for_concert(request, concert_id):
         'form': form
     })
 
-
+def booking_success(request):
+    return render(request, 'home/booking_success.html')
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
