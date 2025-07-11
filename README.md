@@ -146,3 +146,11 @@ This project is licensed under the MIT License. Feel free to customize, build up
 ---
 
 Want me to drop this into a Copilot Page and shape it into a polished Markdown file live? Or help add badges, embed demo videos, or include deployment instructions for Render or Railway? We can make this README rock as hard as your app 🎤🧑‍💻🪩
+
+## User Stories 🎯
+
+- **As a concertgoer**, I want to easily search for upcoming gigs by genre and location, so I can find events that match my taste and schedule.
+- **As a venue manager**, I want to list events and manage ticket availability, so I can promote concerts and track sales in real-time.
+- **As a band member**, I want to see audience feedback and engagement stats, so I can plan my next tour with better insights.
+- **As a first-time visitor**, I want a smooth, visually engaging homepage that guides me effortlessly to popular events and easy ticket booking.
+- **As a returning user**, I want personalized recommendations and quick access to my past bookings, so I can keep discovering music without starting from scratch.
