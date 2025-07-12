@@ -15,6 +15,9 @@ STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
 STRIPE_WEBHOOK_SECRET = config('STRIPE_WEBHOOK_SECRET')
 stripe.api_key = STRIPE_SECRET_KEY
 
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+
 # --- Debug & Hosts ---
 DEBUG = config('DEBUG', default=False, cast=bool)
 from decouple import Csv
