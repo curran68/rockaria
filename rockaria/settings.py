@@ -19,11 +19,18 @@ STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 
 # --- Debug & Hosts ---
-DEBUG = config('DEBUG', default=False, cast=bool)
-from decouple import Csv
+DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.github.dev']
-ALLOWED_HOSTS = ['rockaria.herokuapp.com']
+if DEBUG:
+    # Allow all hosts in development (e.g. localhost, Codespaces, etc.)
+    ALLOWED_HOSTS = ["*"]
+else:
+    # Be strict in production
+    ALLOWED_HOSTS = [
+        "rockaria.herokuapp.com",
+        ".github.dev",
+    ]
+
 
 DATABASES = {
     'default': {

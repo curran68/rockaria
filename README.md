@@ -1,6 +1,7 @@
 # rockaria
 MP4 Rockaria
 
+Heroku URL - https://git.heroku.com/rockaria.git
 
 # 🎸 Django Rockaria
 
@@ -145,7 +146,6 @@ This project is licensed under the MIT License. Feel free to customize, build up
 
 ---
 
-Want me to drop this into a Copilot Page and shape it into a polished Markdown file live? Or help add badges, embed demo videos, or include deployment instructions for Render or Railway? We can make this README rock as hard as your app 🎤🧑‍💻🪩
 
 ## User Stories 🎯
 
