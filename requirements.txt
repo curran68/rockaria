@@ -3,8 +3,8 @@ gunicorn==23.0.0
 django-allauth==65.9.0
 django-crispy-forms==2.4
 crispy-bootstrap5==2025.6
-psycopg2-binary==2.9.9 # Use if you're using a PostgreSQL database
+psycopg2-binary==2.9.9
 whitenoise==6.9.0
 python-decouple==3.8
 python-dotenv==1.1.0
-stripe==12.3.0
+stripe==12.3.0  # Added the stripe library with a specific version
