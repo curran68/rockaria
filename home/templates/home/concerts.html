@@ -14,7 +14,7 @@
 
         <div class="card bg-dark border-0 shadow-sm text-light w-100 h-100">
           {# Add a placeholder image if your Concert model doesn't have an image field, or update this if it does #}
-          <img src="{% static 'images/concert_placeholder.jpg' %}" class="card-img-top" alt="Concert Image">
+          <img src="{% static '/images/park.jpg' %}" class="card-img-top" alt="Park">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title text-warning">{{ concert.title }}</h5>
             <p class="card-text small"><i class="fa-solid fa-calendar-alt"></i> Date: {{ concert.date|date:"F d, Y" }}</p>
