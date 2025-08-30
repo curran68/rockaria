@@ -7,3 +7,4 @@ psycopg2-binary==2.9.9 # Use if you're using a PostgreSQL database
 whitenoise==6.9.0
 python-decouple==3.8
 python-dotenv==1.1.0
+stripe==12.3.0
