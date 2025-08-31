@@ -1,6 +1,6 @@
 # 🎸 Rockaria 
 
-![Homepage on Multiple Devices](media/header.jpg)
+![Homepage on Multiple Devices](media/grabs/header.jpg)
 
 
 Code Institute MP4 Rockaria project built by Mark Curran
@@ -23,9 +23,12 @@ The planned venue is Towneley Park Burnley, this venue i have previously been to
 - Database: SQLite (default)
 - Language: Python
 - Template Engine: Django templates
-- Bootstrap 5
+- Bootstrap 5 Used Throughout
 - Microsoft VSCode
 - Stripe Payment System
+- Java
+- HTML
+- Custom CSS
 
 
 ## 🛠️ Getting Started
@@ -42,31 +45,27 @@ The planned venue is Towneley Park Burnley, this venue i have previously been to
 
 I have used a simple colour scheme, which makes it not only stand out but also striking.
 
-![Project Screenshot](media/colours.jpg)
+![Project Screenshot](media/grabs/colours.jpg)
 
 
 
 
 ## Homepage on Different Devices
 
-### Mobile
-![Mobile Screenshot](assets/home-mobile.png)
-
-### Laptop
-![Laptop Screenshot](assets/home-laptop.png)
-
-### iMac
-![iMac Screenshot](assets/home-imac.png)
-
+### Mobile - Laptop - iMac
 
 <p align="center">
-  <img src="assets/home-mobile.png" width="200"/>
-  <img src="assets/home-laptop.png" width="300"/>
-  <img src="assets/home-imac.png" width="300"/>
+  <img src="media/grabs/iPhone.png" width="200"/>
+  <img src="media/grabs/MacBook.png" width="300"/>
+  <img src="media/grabs/iMac.png" width="300"/>
 </p>
 
 
 
+## Homepage Example 
 
+### Image of homepage
 
-![Project Screenshot](media/screenshot.jpg)
+<p align="center">
+  <img src="media/grabs/screenshot.png" width="800"/>
+</p>
