@@ -75,3 +75,14 @@ I have used a simple colour scheme, which makes it not only stand out but also s
 <p align="center">
   <img src="media/grabs/screenshot.png" width="800"/>
 </p>
+
+
+# Info About The Concert
+
+## My First Project Of This Nature
+
+- Venue is Towneley Park Burnley (Outdoor Event)
+- Date Planned 4th July 2026
+- Ticket Price £20.00 Each
+
+
