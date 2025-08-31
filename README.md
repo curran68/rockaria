@@ -30,6 +30,12 @@ The planned venue is Towneley Park Burnley, this venue i have previously been to
 - HTML
 - Custom CSS
 
+## 🔍 Typeface, Colours and Fonts
+
+- Font Awesome
+- Google Fonts
+- Uniformed Colours
+
 
 ## 🛠️ Getting Started
 
