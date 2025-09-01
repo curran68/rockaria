@@ -9,9 +9,10 @@ import dj_database_url
 # --- Base Directory ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# --- Secret Keys & API Credentials ---
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# --- Secret Key ---
+SECRET_KEY = config('SECRET_KEY')
 
+# --- Stripe ---
 STRIPE_SECRET_KEY = config("STRIPE_SECRET_KEY")
 STRIPE_PUBLIC_KEY = config("STRIPE_PUBLIC_KEY")
 STRIPE_WEBHOOK_SECRET = config("STRIPE_WEBHOOK_SECRET")
@@ -19,21 +20,12 @@ stripe.api_key = STRIPE_SECRET_KEY
 
 # --- Debug & Hosts ---
 DEBUG = config("DEBUG", default=False, cast=bool)
-
-if DEBUG:
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", ".github.dev"]
-else:
-    ALLOWED_HOSTS = ["rockaria.herokuapp.com"]
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost,127.0.0.1", cast=Csv())
 
 # --- Database ---
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(default=config("DATABASE_URL"))
 }
-
-
 
 # --- Installed Apps ---
 INSTALLED_APPS = [
