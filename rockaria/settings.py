@@ -1,7 +1,6 @@
 # rockaria/settings.py
 
 import os
-import env
 from pathlib import Path
 from decouple import config, Csv
 import stripe
