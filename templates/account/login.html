@@ -19,14 +19,31 @@
         <div class="card shadow-lg border-0 rounded-4 animate__animated animate__fadeInUp bg-dark text-white">
           <div class="card-body p-4">
             <h2 class="text-center mb-4 text-warning fw-bold" style="font-family: 'Roboto', sans-serif;">
-
               <i class="fas fa-sign-in-alt me-2"></i>Welcome Back
             </h2>
             <form method="post" action="{% url 'account_login' %}">
               {% csrf_token %}
-              {{ form|crispy }}
+              {{ form.non_field_errors }}
+
+              <div class="mb-3">
+                {{ form.login.label_tag }}
+                {{ form.login }}
+                {{ form.login.errors }}
+              </div>
+              <div class="mb-3">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                {{ form.password.errors }}
+              </div>
+              {% if form.remember %}
+                <div class="form-check mb-3">
+                  {{ form.remember }}
+                  {{ form.remember.label_tag }}
+                </div>
+              {% endif %}
               <button type="submit" class="btn btn-warning w-100 mt-3 fw-bold">Log In</button>
             </form>
+
             <div class="mt-4 text-center">
               <p class="text-muted">
                 Don't have an account? 

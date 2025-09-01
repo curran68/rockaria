@@ -11,6 +11,8 @@ import stripe
 
 from bands.models import Band, Concert
 from .forms import TicketBookingForm
+from tickets.models import Purchase
+
 
 def book_tickets_for_concert(request, concert_id):
     concert = get_object_or_404(Concert, id=concert_id)
@@ -128,6 +130,11 @@ def terms_view(request):
 def contact_view(request):
     return render(request, 'home/contact.html')
 
+@login_required
+def profile(request):
+    """Display the user's profile and their purchased tickets."""
+    purchases = Purchase.objects.filter(user=request.user).select_related('ticket')
+    return render(request, 'home/profile.html', {'purchases': purchases})
 
 
 

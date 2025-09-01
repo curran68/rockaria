@@ -101,10 +101,12 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 # --- Allauth Configuration ---
-ACCOUNT_LOGIN_METHODS = {'email', 'username'}
-ACCOUNT_SIGNUP_FIELDS = ['username', 'email']
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # allows login with username or email
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True  # or False if you want email-only accounts
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_SESSION_REMEMBER = None
 
 # --- Email ---
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -144,3 +146,14 @@ MEDIA_ROOT = BASE_DIR / "media"
 # --- Auth Redirects ---
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
+
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
+from decouple import config
+DEBUG = config("DEBUG", default=True, cast=bool)
+
+# DEV ONLY
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+ACCOUNT_EMAIL_VERIFICATION = "none"  # or "optional"
+

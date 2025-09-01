@@ -4,9 +4,26 @@
   <div class="container py-5">
     <h2 class="text-center">My Profile</h2>
     <p class="text-muted text-center">Welcome back, {{ user.username }}!</p>
-    <!-- Add profile-related content here -->
+
+    <hr>
+
+    <h3 class="mt-4">Your Purchased Tickets</h3>
+    <ul class="list-group mb-4">
+      {% for purchase in purchases %}
+        <li class="list-group-item">
+          <strong>{{ purchase.ticket.name }}</strong>
+          <br>
+          <small>Purchased on {{ purchase.purchase_date|date:"F j, Y, g:i a" }}</small>
+        </li>
+      {% empty %}
+        <li class="list-group-item text-muted">
+          You have not purchased any tickets yet.
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 {% endblock %}
+
 {% block postloadjs %}
   <script>
     document.addEventListener("DOMContentLoaded", function() {
