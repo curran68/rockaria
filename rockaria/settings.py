@@ -1,15 +1,17 @@
 # rockaria/settings.py
 
 import os
+import env
 from pathlib import Path
 from decouple import config, Csv
 import stripe
+import dj_database_url
 
 # --- Base Directory ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --- Secret Keys & API Credentials ---
-SECRET_KEY = config("DJANGO_SECRET_KEY")
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 STRIPE_SECRET_KEY = config("STRIPE_SECRET_KEY")
 STRIPE_PUBLIC_KEY = config("STRIPE_PUBLIC_KEY")
@@ -32,6 +34,8 @@ DATABASES = {
     }
 }
 
+
+
 # --- Installed Apps ---
 INSTALLED_APPS = [
     # Django core
@@ -49,6 +53,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "crispy_forms",
     "crispy_bootstrap5",
+    "storages",
 
     # Local apps
     "home",
@@ -117,6 +122,24 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+
+if 'USE_AWS' in os.environ:
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'rockariaaws' # change this to your AWS bucket name
+    AWS_S3_REGION_NAME = 'us-east-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 # --- Static & Media ---
 STATIC_URL = "/static/"

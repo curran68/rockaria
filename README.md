@@ -29,6 +29,7 @@ The planned venue is Towneley Park Burnley, this venue i have previously been to
 - Java
 - HTML
 - Custom CSS
+- Deployed To Heroku
 
 ## 🔍 Typeface, Colours and Fonts
 
