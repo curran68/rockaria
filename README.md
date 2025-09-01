@@ -95,7 +95,7 @@ I have used a simple colour scheme, which makes it not only stand out but also s
 
 ## My First Project Of This Nature
 
-- Venue is Towneley Park Burnley (Outdoor Event)
+- Venue is Towneley Park Burnley, Lancashire (Outdoor Event)
 - Date Planned 4th July 2026
 - Ticket Price £25.00 Each
 
@@ -103,13 +103,13 @@ I have used a simple colour scheme, which makes it not only stand out but also s
 # Method Of Building
 
 Within Microsoft Visual Studio Code, using Django, Python and 
-Java i set about designing and building the framework
+Java I set about designing and building the framework
 to create Rockaria. The idea of Rockaria came about from 
 my love of music and live concerts.
-Also within this project i have also used HTML, CSS and Bootstrap.
-Typeface and other designs are from Font awesome and also Google Fonts.
+Also within this project I have also used HTML, CSS and Bootstrap.
+Typeface and other designs are from Font Awesome and also Google Fonts.
 Making sure the site is responsive across different devices.
-As this is my first Django project throughout i faced challenges and 
+As this is my first Django project throughout I faced challenges and 
 also some demanding issues which needed thought and processes to
 remedy problems along the way.
 
@@ -117,12 +117,12 @@ The site is deployed to Heroku.
 
 Within the layout from the homepage, starting at the top is the 
 navigation bar. Within this there is a decorative home link, also
-on thr right hand side of the navbar there is a link to take you to
+on the right hand side of the navbar there is a link to take you to
 a ticket booking page and an account section, where you can register
 login etc.
 
 Onto the middle section of the landing page an informative section 
-with more info along with large buttons to highlight the bands on stage
+with more information along with large buttons to highlight the bands on stage
 and info regarding the location of the concert.
 
 At the bottom there is the footer section with links to a contact form,
