@@ -109,4 +109,29 @@ As this is my first Django project throughout i faced challenges and
 also some demanding issues which needed thought and processes to
 remedy problems along the way.
 
+The site is deployed to Heroku.
 
+Within the layout from the homepage, starting at the top is the 
+navigation bar. Within this there is a decorative home link, also
+on thr right hand side of the navbar there is a link to take you to
+a ticket booking page and an account section, where you can register
+login etc.
+
+Onto the middle section of the landing page an informative section 
+with more info along with large buttons to highlight the bands on stage
+and info regarding the location of the concert.
+
+At the bottom there is the footer section with links to a contact form,
+social media copyright and terms.
+
+
+
+
+# Testing
+
+From start to finish this project has been tested with functionaility in 
+mind.
+
+
+
+# Wireframes
