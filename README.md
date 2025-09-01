@@ -39,6 +39,12 @@ The planned venue is Towneley Park Burnley, this venue i have previously been to
 - Google Fonts
 - Uniformed Colours
 
+## Colours Used
+
+I have used a simple colour scheme, which makes it not only stand out but also striking.
+
+![Project Screenshot](media/grabs/colours.jpg)
+
 
 ## 🛠️ Getting Started
 
@@ -50,19 +56,14 @@ The planned venue is Towneley Park Burnley, this venue i have previously been to
 - **As a returning user**, I want a great variety and quick access to my past bookings, so I can keep discovering music without starting from scratch.
 
 
-| Column 1 | Column 2 | Column 3 |
-|----------|----------|----------|
-| Row 1    | Data     | More     |
-| Row 2    | Info     | Stuff    |
-| Row 3    | Info     | Stuff.   |
-| Row 3    | Info     | Stuff.   |
+| Type                  | Feedback                             | 
+|-----------------------|--------------------------------------|
+| Concertgoer           | Suited my needs.                     | 
+| Music Lover           | This type of venue is great.         | 
+| First Time Visitor    | Ideal design great to navigate.      | 
+| Returning User        | Platform ideal for another concert.  | 
 
 
-## Colours Used
-
-I have used a simple colour scheme, which makes it not only stand out but also striking.
-
-![Project Screenshot](media/grabs/colours.jpg)
 
 
 
@@ -105,6 +106,7 @@ to create Rockaria. The idea of Rockaria came about from
 my love of music and live concerts.
 Also within this project i have also used HTML, CSS and Bootstrap.
 Typeface and other designs are from Font awesome and also Google Fonts.
+Making sure the site is responsive across different devices.
 As this is my first Django project throughout i faced challenges and 
 also some demanding issues which needed thought and processes to
 remedy problems along the way.
