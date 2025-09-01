@@ -17,7 +17,7 @@ Live Site -  https://rockaria-48839712a53e.herokuapp.com/
 # 🎸 Django Rockaria
 
 Django Rockaria is a web application built with Django HTML, CSS, Bootstrap and Java. I designed this project showcase the power of a structured backend paired with dynamic content. This project is based on a one music event (One Day Only).
-The planned venue is Towneley Park Burnley, this venue i have previously been to a music openair concert and found it an ideal location.  
+Towneley Park Burnley, Lancashire, is the planned venue for the music event, where I have previously attended a music openair concert and found it to be an ideal location.  
 
 ## 🔍 Overview
 
