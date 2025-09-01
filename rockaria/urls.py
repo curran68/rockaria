@@ -29,7 +29,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
     path('bands/', include('bands.urls')),
-    path('products/', include('products.urls')),
+    path('tickets/', include('tickets.urls')),
     path('payments/', include('payments.urls')),
     path('admin/', admin.site.urls),
     path('bands/', include('bands.urls')),

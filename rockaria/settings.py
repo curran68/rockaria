@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     # Local apps
     "home",
     "bands",
-    "products",
+    "tickets",
     "payments",
 ]
 
