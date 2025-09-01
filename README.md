@@ -26,10 +26,12 @@ The planned venue is Towneley Park Burnley, this venue i have previously been to
 - Bootstrap 5 Used Throughout
 - Microsoft VSCode
 - Stripe Payment System
+- Postgres / Amazon WebServices
 - Java
 - HTML
 - Custom CSS
 - Deployed To Heroku
+
 
 ## 🔍 Typeface, Colours and Fonts
 
@@ -44,9 +46,17 @@ The planned venue is Towneley Park Burnley, this venue i have previously been to
 
 - **As a concertgoer**, I want to easily search for upcoming gigs by genre and location, so I can find events that match my taste and schedule.
 - **As a music lover**, I want to enjoy the atmosphere, music and the environment whether it be indoor or outdoor events.
-- **As a band member**, I want to see audience feedback and engagement stats, so I can plan my next tour with better insights.
 - **As a first-time visitor**, I want a smooth, visually engaging homepage that guides me effortlessly to popular events and easy ticket booking.
 - **As a returning user**, I want a great variety and quick access to my past bookings, so I can keep discovering music without starting from scratch.
+
+
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Row 1    | Data     | More     |
+| Row 2    | Info     | Stuff    |
+| Row 3    | Info     | Stuff.   |
+| Row 3    | Info     | Stuff.   |
+
 
 ## Colours Used
 
@@ -85,5 +95,18 @@ I have used a simple colour scheme, which makes it not only stand out but also s
 - Venue is Towneley Park Burnley (Outdoor Event)
 - Date Planned 4th July 2026
 - Ticket Price £25.00 Each
+
+
+# Method Of Building
+
+Within Microsoft Visual Studio Code, using Django, Python and 
+Java i set about designing and building the framework
+to create Rockaria. The idea of Rockaria came about from 
+my love of music and live concerts.
+Also within this project i have also used HTML, CSS and Bootstrap.
+Typeface and other designs are from Font awesome and also Google Fonts.
+As this is my first Django project throughout i faced challenges and 
+also some demanding issues which needed thought and processes to
+remedy problems along the way.
 
 
