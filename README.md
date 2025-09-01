@@ -129,7 +129,7 @@ social media copyright and terms.
 
 # Testing
 
-From start to finish this project has been tested with functionaility in 
+From start to finish this project has been tested with functionality in 
 mind.
 
 
