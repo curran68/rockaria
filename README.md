@@ -136,6 +136,13 @@ social media copyright and terms.
 From start to finish this project has been tested with functionality in 
 mind.
 
+## Lighthouse Tests
 
+![Project Screenshot](media/grabs/lighta.jpg)
+![Project Screenshot](media/grabs/lightb.jpg)
+
+## Heroku Test
+
+![Project Screenshot](media/grabs/heroku.jpg)
 
 # Wireframes
