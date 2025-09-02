@@ -135,6 +135,9 @@ social media copyright and terms.
 
 From start to finish this project has been tested with functionality in 
 mind.
+In the building of this project stages of testing and checking listed below
+
+
 
 ## Lighthouse Tests
 
