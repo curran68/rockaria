@@ -151,3 +151,9 @@ In the building of this project stages of testing and checking listed below
 # Wireframes
 
 ![Project Screenshot](media/grabs/rockaria1.jpg)
+
+![Project Screenshot](media/grabs/rockaria2.jpg)
+
+![Project Screenshot](media/grabs/rockaria3.jpg)
+
+![Project Screenshot](media/grabs/rockaria4.jpg)
