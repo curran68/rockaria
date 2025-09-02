@@ -137,6 +137,17 @@ From start to finish this project has been tested with functionality in
 mind.
 In the building of this project stages of testing and checking listed below
 
+## Testing Stages
+
+Throughout the project, regularly testing for issues with loading.
+Making sure the site is responsive from the beginning.
+On creation of different features making sure these work.
+Different browsers used for testing including Chrome, Firefox and Opera.
+Checked load times on lighthouse.
+W3 Validation Checks
+Heroku App. made sure deployment is in place.
+Stripe payment system works.
+
 
 
 ## Lighthouse Tests
@@ -157,3 +168,13 @@ In the building of this project stages of testing and checking listed below
 ![Project Screenshot](media/grabs/rockaria3.jpg)
 
 ![Project Screenshot](media/grabs/rockaria4.jpg)
+
+
+
+# More information
+
+Rockaria has started its first stage hosting a one day live outdoor
+music event.
+
+I feel this is only the start, this can be expanded to not only
+more events but in changing line ups and area planning.
