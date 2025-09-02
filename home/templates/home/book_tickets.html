@@ -31,7 +31,7 @@
             
             <div class="text-center mt-4">
               <a href="{% url 'home' %}" class="btn btn-outline-secondary me-2">Cancel</a>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmModal">
                 Submit Booking
               </button>
             </div>
@@ -54,7 +54,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" onclick="document.getElementById('bookingForm').submit()">
+          <button type="button" class="btn btn-warning" onclick="document.getElementById('bookingForm').submit()">
             Yes, Submit
           </button>
         </div>
