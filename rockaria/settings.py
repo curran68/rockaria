@@ -101,12 +101,21 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 # --- Allauth Configuration ---
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # allows login with username or email
+# Use ACCOUNT_AUTHENTICATION_METHOD with a set of strings.
+# This replaces the deprecated ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+
+# Email is now required for signup by default if it's in ACCOUNT_SIGNUP_FIELDS.
+# This replaces the deprecated ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = True  # or False if you want email-only accounts
+
+# Username is now required for signup by default if it's in ACCOUNT_SIGNUP_FIELDS.
+# This replaces the deprecated ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-ACCOUNT_SESSION_REMEMBER = None
+ACCOUNT_SESSION_REMEMBER = True
 
 # --- Email ---
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
