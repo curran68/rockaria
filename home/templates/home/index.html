@@ -1,4 +1,3 @@
-<!-- index.html -->
 {% extends "base.html" %}
 
 {% load static %}
@@ -12,26 +11,27 @@
 {% endblock %}
 
 {% block content %}
-<section class="text-light pt-5 pb-5 hero-section">
-  <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
-    <h1 class="display-3 logo-font mb-3 text-warning animate__animated animate__fadeInDown">
-      <strong>ROCKARIA</strong>
-    </h1>
-    
-    <p class="fs-4 fw-light text-light">A Unique Outdoor Rock Event</p>
-    
-    <p class="lead text-light mt-3 mb-4 animate__animated animate__fadeInUp animate__delay-05s">
+<section class="text-light pt-5 pb-5" style="
+  background: url('{% static " images/vinyl-wall.jpg" %}') center/cover no-repeat; background-color: rgba(0, 0, 0,
+  0.75); background-blend-mode: overlay; min-height: 100vh; ">
+  <div class=" container h-100 d-flex flex-column justify-content-center align-items-center text-center">
+  <h1 class="display-3 logo-font mb-3 text-warning animate__animated animate__fadeInDown">
+    <strong>ROCKARIA</strong><br>
+    <span class="fs-4 fw-light text-light">A Unique Outdoor Rock Event</span>
+    <p class="lead text-light mt-3 mb-4 animate__animated animate__fadeInUp animate__delay-0-5s">
       All Tickets £25.00!
     </p>
+  </h1>
 
-    <p class="lead mb-4 bg-warning text-dark p-3 rounded animate__animated animate__fadeInUp">
-      Towneley Park Burnley • July 26
-    </p>
+  <p class="lead mb-4 bg-warning text-dark p-3 rounded animate__animated animate__fadeInUp">
+    Towneley Park Burnley • July 26
+  </p>
 
-    <div class="my-4 animate__animated animate__fadeInUp animate__delay-1s">
-      <a href="{% url 'bands' %}" class="btn btn-lg btn-warning rounded-pill text-uppercase py-3 px-4 me-3">Our Bands</a>
-      <a href="{% url 'concerts' %}" class="btn btn-lg btn-outline-light rounded-pill text-uppercase py-3 px-4">Concert</a>
-    </div>
+  <div class="my-4 animate__animated animate__fadeInUp animate__delay-1s">
+    <a href="{% url 'bands' %}" class="btn btn-lg btn-warning rounded-pill text-uppercase py-3 px-4 me-3">Our Bands</a>
+    <a href="{% url 'concerts' %}"
+      class="btn btn-lg btn-outline-light rounded-pill text-uppercase py-3 px-4">Concert</a>
+  </div>
   </div>
 </section>
 {% endblock %}
@@ -39,19 +39,7 @@
 {% block extra_css %}
   {{ block.super }}
   <style>
-    .hero-section {
-      background: url('{% static 'images/concert.jpg' %}') center/cover no-repeat;
-      background-color: rgba(0, 0, 0, 0.75);
-      background-blend-mode: multiply;
-      min-height: 100vh;
-    }
-
-    .header-container {
-      background: rgba(20, 20, 20, 0.95); /* much darker than white */
-      min-height: 56px;
-      border-bottom: 1px solid rgba(255,255,255,0.08); /* subtle border */
-    }
-
+    /* Blue highlight box (still optional, but cleaned up) */
     .highlight-blue-box {
       background-color: rgba(173, 216, 230, 0.7);
       padding: 10px 15px;
@@ -60,6 +48,7 @@
       width: 100%;
     }
 
+    /* Hero heading (ROCKARIA) styles */
     .logo-font {
       line-height: 1.1;
       word-break: break-word;
@@ -87,3 +76,4 @@
     }
   </style>
 {% endblock %}
+
