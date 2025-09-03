@@ -1,3 +1,4 @@
+<!-- index.html -->
 {% extends "base.html" %}
 
 {% load static %}
@@ -11,12 +12,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="text-light pt-5 pb-5" style="
-  background: url('{% static "images/vinyl-wall.jpg" %}') center/cover no-repeat; 
-  background-color: rgba(0, 0, 0, 0.75); 
-  background-blend-mode: overlay; 
-  min-height: 100vh;">
-  
+<section class="text-light pt-5 pb-5 hero-section">
   <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
     <h1 class="display-3 logo-font mb-3 text-warning animate__animated animate__fadeInDown">
       <strong>ROCKARIA</strong>
@@ -43,7 +39,13 @@
 {% block extra_css %}
   {{ block.super }}
   <style>
-    /* Blue highlight box (still optional, but cleaned up) */
+    .hero-section {
+      background: url('{% static 'images/vinyl-wall.jpg' %}') center/cover no-repeat;
+      background-color: rgba(0, 0, 0, 0.75);
+      background-blend-mode: overlay;
+      min-height: 100vh;
+    }
+
     .highlight-blue-box {
       background-color: rgba(173, 216, 230, 0.7);
       padding: 10px 15px;
@@ -52,7 +54,6 @@
       width: 100%;
     }
 
-    /* Hero heading (ROCKARIA) styles */
     .logo-font {
       line-height: 1.1;
       word-break: break-word;
