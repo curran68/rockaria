@@ -40,10 +40,16 @@
   {{ block.super }}
   <style>
     .hero-section {
-      background: url('{% static 'images/vinyl-wall.jpg' %}') center/cover no-repeat;
+      background: url('{% static 'images/concert.jpg' %}') center/cover no-repeat;
       background-color: rgba(0, 0, 0, 0.75);
-      background-blend-mode: overlay;
+      background-blend-mode: multiply;
       min-height: 100vh;
+    }
+
+    .header-container {
+      background: rgba(20, 20, 20, 0.95); /* much darker than white */
+      min-height: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.08); /* subtle border */
     }
 
     .highlight-blue-box {
