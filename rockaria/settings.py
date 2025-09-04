@@ -102,7 +102,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 # --- Allauth Configuration ---
-ACCOUNT_SIGNUP_FIELDS = ['username', 'email']
+ACCOUNT_SIGNUP_FIELDS = ['username', 'email*']
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_SESSION_REMEMBER = True
