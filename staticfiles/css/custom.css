@@ -1,0 +1,131 @@
+/* ROCKARIA THEME — CUSTOM STYLES */
+
+/* Navbar center banner animation */
+.rockaria-banner {
+  padding-left: 20px;
+  font-weight: bold;
+  font-size: 1.75em;
+  font-family: 'Roboto', sans-serif;
+  color: #ffc107;
+}
+
+
+@keyframes pulseText {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+}
+
+/* Hero title styles */
+.logo-font {
+  line-height: 1.1;
+  word-break: break-word;
+  text-align: center;
+}
+
+.logo-font strong {
+  font-size: 3rem;
+}
+
+.logo-font span {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .logo-font strong {
+    font-size: 2.25rem;
+  }
+  .logo-font span {
+    font-size: 1rem;
+  }
+}
+
+/* Utility highlight box */
+.highlight-blue-box {
+  background-color: rgba(173, 216, 230, 0.7);
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  width: 100%;
+}
+
+/* In static/css/custom.css */
+
+/* Make the "Book Tickets" link larger and bolder */
+.navbar-nav .nav-item .navbar-book-tickets-link {
+    font-size: 1.3em; /* Keep your desired larger size, e.g., 1.3em */
+    font-weight: bold;
+    /* This rule will ensure the padding for Book Tickets is consistent */
+    padding: 8px 16px !important; /* Force this padding for Book Tickets */
+    line-height: 1; /* Helps with vertical text alignment */
+    box-sizing: border-box; /* Good practice for consistent sizing */
+}
+
+/* Optional: Adjust for smaller screens (mobile view) */
+@media (max-width: 991px) {
+    .navbar-nav .nav-item .navbar-book-tickets-link {
+        font-size: 1.1em;
+        padding: 8px 12px !important; /* Adjust horizontal padding for mobile if needed */
+        line-height: 1;
+    }
+}
+
+/* --- Crucial Alignment & Consistent Padding Rules --- */
+
+/* Apply consistent padding and alignment to ALL nav-links in the ms-auto group */
+.navbar-nav.ms-auto .nav-item .nav-link {
+    padding: 12px 16px !important; /* Force this padding for Login, Register */
+    display: flex; /* Ensure flexbox is active for vertical centering */
+    align-items: center; /* Vertically center content */
+    line-height: 1; /* Consistent line-height */
+    box-sizing: border-box;
+    height: 100%; /* Make them take full height of the parent li if possible */
+}
+
+/* Ensure the li container itself helps with alignment */
+.navbar-nav.ms-auto > .nav-item {
+    display: flex; /* Make the li a flex container */
+    align-items: center; /* Vertically center its child (the link/form) */
+    margin-bottom: 0 !important; /* Remove any potential bottom margins */
+    box-sizing: border-box;
+}
+
+
+/* Specific for the logout form and its button to ensure alignment */
+.navbar-nav.ms-auto .nav-item form {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 !important; /* Remove any default margins on the form */
+    padding: 0 !important; /* Remove any default paddings on the form itself */
+    box-sizing: border-box;
+}
+
+.navbar-nav.ms-auto .nav-item form .btn.nav-link {
+    padding: 8px 16px !important; /* Force this padding for the Logout button */
+    line-height: 1; /* Consistent line-height */
+    box-sizing: border-box;
+    height: 100%; /* Ensure button takes full height */
+}
+
+.band-logo {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  background-color: #111;
+}
+
+.logo-container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
