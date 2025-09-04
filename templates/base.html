@@ -22,11 +22,17 @@
   <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
   <style>
+
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
+
+    .main-content-wrapper {
+      flex-grow: 1;
+      padding-top: 56px; /* Adjust this value to match the height of your header */
+}
 
     .main-content-wrapper {
       flex-grow: 1;
@@ -51,7 +57,7 @@
 
     @media (max-width: 991px) {
       .main-content-wrapper {
-        padding-top: 100px;
+        padding-top: 20px;
       }
     }
   </style>
