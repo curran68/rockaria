@@ -5,6 +5,7 @@ from pathlib import Path
 from decouple import config, Csv
 import stripe
 import dj_database_url
+import ssl
 
 # --- Base Directory ---
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -101,33 +102,31 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 # --- Allauth Configuration ---
-# Use ACCOUNT_AUTHENTICATION_METHOD with a set of strings.
-# This replaces the deprecated ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_LOGIN_METHODS = {'username', 'email'}
-
-# Email is now required for signup by default if it's in ACCOUNT_SIGNUP_FIELDS.
-# This replaces the deprecated ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_REQUIRED = True
-
-# Username is now required for signup by default if it's in ACCOUNT_SIGNUP_FIELDS.
-# This replaces the deprecated ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
-
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_SESSION_REMEMBER = True
 
-# --- Email ---
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# --- Email Configuration ---
 EMAIL_HOST = config("EMAIL_HOST", default="smtp.sendgrid.net")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 
+# Development vs Production Email Settings
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    ACCOUNT_EMAIL_VERIFICATION = "none"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+# --- Static & Media Files Configuration ---
 if 'USE_AWS' in os.environ:
-    # Bucket Config
-    AWS_STORAGE_BUCKET_NAME = 'rockariaaws' # change this to your AWS bucket name
+    # AWS S3 Configuration (Production)
+    AWS_STORAGE_BUCKET_NAME = 'rockariaaws'
     AWS_S3_REGION_NAME = 'us-east-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -142,27 +141,18 @@ if 'USE_AWS' in os.environ:
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-
-# --- Static & Media ---
-STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+else:
+    # Local Development Configuration
+    STATIC_URL = "/static/"
+    STATICFILES_DIRS = [BASE_DIR / "static"]
+    STATIC_ROOT = BASE_DIR / "staticfiles"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = BASE_DIR / "media"
 
 # --- Auth Redirects ---
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 
-import ssl
+# --- SSL Configuration ---
 ssl._create_default_https_context = ssl._create_unverified_context
-
-from decouple import config
-DEBUG = config("DEBUG", default=True, cast=bool)
-
-# DEV ONLY
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-ACCOUNT_EMAIL_VERIFICATION = "none"  # or "optional"
-
